@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/spring3.png" type="Texture" id=1]
+[ext_resource path="res://spring_stomp.gd" type="Script" id=2]
+[ext_resource path="res://sprites/spring1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/spring2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.7692, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30.7692, 25 )
+
+[node name="spring_stomp" type="KinematicBody2D" groups=[
+"spring",
+]]
+scale = Vector2( 1.04028, 0.159176 )
+collision_layer = 32
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, -16.0 ],
+"_edit_vertical_guides_": [ -32.0, 32.0 ]
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -50.2588 )
+scale = Vector2( 0.295778, 2.09412 )
+frames = SubResource( 3 )
+
+[node name="clss1" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -50 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -4.03897e-28, -50 )
+scale = Vector2( 3.07692, 5 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"spring",
+]]
+position = Vector2( 0, -100.518 )
+collision_layer = 32
+
+[node name="clss3" type="CollisionShape2D" parent="Area2D"]
+rotation = 3.14159
+shape = SubResource( 2 )
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

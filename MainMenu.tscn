@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/button/button_pressed.png" type="Texture" id=2]
+[ext_resource path="res://theme_default.tres" type="Theme" id=3]
+[ext_resource path="res://play_button.gd" type="Script" id=4]
+[ext_resource path="res://sprites/button/button_normal.png" type="Texture" id=11]
+[ext_resource path="res://sprites/button/button_hover.png" type="Texture" id=12]
+
+[node name="MainMenu" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play_button" type="TextureButton" parent="CanvasLayer"]
+anchor_left = 0.367
+anchor_top = 0.469
+anchor_right = 0.633
+anchor_bottom = 0.531
+margin_left = -0.200012
+margin_top = -0.256012
+margin_right = 0.199982
+margin_bottom = 0.255981
+theme = ExtResource( 3 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 12 )
+expand = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene_path = "res://Main.tscn"
+
+[node name="play_label" type="Label" parent="CanvasLayer/play_button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Play"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/play_button" to="CanvasLayer/play_button" method="_on_play_button_pressed"]

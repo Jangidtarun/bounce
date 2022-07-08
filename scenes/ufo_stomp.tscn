@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://sprites/flyer/flyer3.png" type="Texture" id=1]
+[ext_resource path="res://ufo_stomp.gd" type="Script" id=2]
+[ext_resource path="res://sprites/flyer/flyer1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/flyer/flyer2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.7692, 50 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29.7997, 18.8469 )
+
+[node name="ufo_stomp" type="KinematicBody2D" groups=[
+"stomp",
+]]
+scale = Vector2( 1.04028, 0.159176 )
+collision_layer = 4
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, -16.0 ],
+"_edit_vertical_guides_": [ -32.0, 32.0 ]
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -50.2588 )
+scale = Vector2( 0.295778, 2.09412 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="CollisionShape2D_1" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -50 )
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"stomp",
+]]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 3.14159
+shape = SubResource( 2 )
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
