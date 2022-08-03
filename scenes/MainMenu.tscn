@@ -35,7 +35,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-next_scene_path = "res://Main.tscn"
+next_scene_path = "res://scenes/Main.tscn"
 
 [node name="play_label" type="Label" parent="CanvasLayer/play_button"]
 anchor_right = 1.0

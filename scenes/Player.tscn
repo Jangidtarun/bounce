@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://camera.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://scripts/camera.gd" type="Script" id=3]
 [ext_resource path="res://sprites/player_shred/player3.png" type="Texture" id=4]
 [ext_resource path="res://sprites/player_shred/player2.png" type="Texture" id=5]
 [ext_resource path="res://sprites/player_shred/player1.png" type="Texture" id=6]
@@ -11,7 +11,7 @@
 [ext_resource path="res://sprites/player_shred/player6.png" type="Texture" id=10]
 [ext_resource path="res://sprites/player_shred/player5.png" type="Texture" id=11]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -19,10 +19,10 @@ animations = [ {
 "speed": 17.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 8 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -33,7 +33,6 @@ collision_mask = 14
 script = ExtResource( 2 )
 
 [node name="camera" type="Camera2D" parent="."]
-scale = Vector2( 1, 1 )
 current = true
 limit_left = 0
 limit_right = 600
@@ -44,11 +43,11 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.90735e-06, -1.90735e-06 )
 scale = Vector2( 0.507812, 0.507813 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 6.28318
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="enemydect" type="Area2D" parent="." groups=[
@@ -60,7 +59,7 @@ collision_mask = 62
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemydect"]
 position = Vector2( 0, 0.499996 )
 rotation = -3.14159
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 one_way_collision = true
 
 [connection signal="area_entered" from="enemydect" to="." method="_on_enemydect_area_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://restart_button.gd" type="Script" id=1]
+[ext_resource path="res://scripts/restart_button.gd" type="Script" id=1]
 [ext_resource path="res://sprites/restart_button/restart_button_hover.png" type="Texture" id=2]
 [ext_resource path="res://sprites/restart_button/restart_button.png" type="Texture" id=3]
 [ext_resource path="res://sprites/restart_button/restart_button_pressed.png" type="Texture" id=4]
@@ -36,6 +36,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-next_scene_path = "res://Main.tscn"
+next_scene_path = "res://scenes/Main.tscn"
 
 [connection signal="pressed" from="CanvasLayer/restart_button" to="CanvasLayer/restart_button" method="_on_restart_button_pressed"]
